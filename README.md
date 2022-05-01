@@ -1,16 +1,16 @@
 # GoogleAuth
 GoogleAuth helps you to easily create google authentication available for your users. It uses the official google-auth library to execute the actions. You can get it working in under 2 minutes in your application. EASY!
 
-![Drag Racing](https://i.ibb.co/Gnm146x/Screenshot-2022-05-02-at-1-37-12-AM.png)
+![Dashboard Screenshot](https://arju-public.s3.ap-south-1.amazonaws.com/Screenshot+2022-05-02+at+1.37.12+AM.png)
 
-## Features
+# Features
 - Official GoogleAPIs integration
 - Using strapi default user-permission collection
 - JWT Authentication
 - Sanitized response
 - Highly secure
 
-## Configuration
+# Configuration
 1. Create a google project from the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D).
 2. Create OAuth Consent Screen (Nav Menu -> APIs & Services -> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent)).
 3. Go to [Credentials](https://console.cloud.google.com/apis/credentials), click create credentials -> OAuth Client ID
@@ -38,4 +38,4 @@ Use the REDIRECTION_AUTH_CODE you have recieved from the step 1 to make the seco
     } 
 ```
 # Report Bugs/Issues
-Any bugs/issues you may face can be submitted as [issues](https://github.com/arjusmoon860/strapi-google-auth/issues) in the [Github repo](https://github.com/arjusmoon860/strapi-google-auth/issues).
+Any bugs/issues you may face can be submitted as issues in the Github repo.
