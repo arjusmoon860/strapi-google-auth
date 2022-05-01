@@ -37,3 +37,5 @@ Use the REDIRECTION_AUTH_CODE you have recieved from the step 1 to make the seco
         }
     } 
 ```
+# Report Bugs/Issues
+Any bugs/issues you may face can be submitted as issues in the Github repo.
