@@ -7,6 +7,9 @@
     "description": "Description of strapi-google-auth plugin",
     "kind": "plugin"
   },
+  "peerDependencies": {
+    "@strapi/strapi": "4.1.9"
+  },
   "dependencies": {
     "google-auth-library": "^8.0.2",
     "googleapis": "^100.0.0"
