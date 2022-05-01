@@ -1,10 +1,10 @@
 {
   "name": "strapi-google-auth",
   "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "description": "GoogleAuth helps you to easily create google authentication available for your users. It uses the official google-auth library to execute the actions.",
   "strapi": {
     "name": "strapi-google-auth",
-    "description": "Description of strapi-google-auth plugin",
+    "description": "GoogleAuth helps you to easily create google authentication available for your users. It uses the official google-auth library to execute the actions. You can get it working in under 2 minutes in your application. EASY!",
     "kind": "plugin"
   },
   "peerDependencies": {
