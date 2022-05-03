@@ -9,7 +9,14 @@ GoogleAuth helps you to easily create google authentication available for your u
 - JWT Authentication
 - Sanitized response
 - Highly secure
-
+ 
+# Activate the Plugin
+Add the folling lines of code in the file: config/plugins.js
+```js
+    'google-auth': {
+        enabled: true,
+    },
+```
 # Configuration
 1. Create a google project from the [Google Cloud Console](https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D).
 2. Create OAuth Consent Screen (Nav Menu -> APIs & Services -> [OAuth consent screen](https://console.cloud.google.com/apis/credentials/consent)).
