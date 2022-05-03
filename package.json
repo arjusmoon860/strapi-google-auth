@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "GoogleAuth helps you to easily create google authentication available for your users. It uses the official google-auth library to execute the actions.",
   "strapi": {
-    "name": "GoogleAuth",
+    "name": "google-auth",
     "description": "GoogleAuth helps you to easily create google authentication available for your users. It uses the official google-auth library to execute the actions. You can get it working in under 2 minutes in your application. EASY!",
     "kind": "plugin"
   },
