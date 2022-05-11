@@ -13,7 +13,7 @@ GoogleAuth helps you to easily create google authentication available for your u
 # Activate the Plugin
 Add the folling lines of code in the file: config/plugins.js
 ```js
-    'strapi-google-auth': {
+    'google-auth': {
         enabled: true,
     },
 ```
@@ -41,6 +41,31 @@ Use the REDIRECTION_AUTH_CODE you have recieved from the step 1 to make the seco
         path: 'STRAPI_BACKEND_URL/strapi-google-auth/user-profile',
         data: {
             code:REDIRECTION_AUTH_CODE
+        }
+    } 
+```
+- ### Get Authenticated user details
+Use the JWT token to fetch the user details.
+```js
+    {
+        method: 'GET',
+        path: 'STRAPI_BACKEND_URL/strapi-google-auth/me',
+        header: {
+            authorization:Bearer <TOKEN>
+        }
+    } 
+```
+- ### Create/Update Password for user account.
+Use the JWT token to fetch the user details.
+```js
+    {
+        method: 'POST',
+        path: 'STRAPI_BACKEND_URL/strapi-google-auth/update-password',
+        header: {
+            authorization:Bearer <TOKEN>
+        },
+        data:{
+            "password":"<NEW PASSWORD>"
         }
     } 
 ```
