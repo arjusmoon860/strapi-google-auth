@@ -24,7 +24,7 @@ Add the folling lines of code in the file: config/plugins.js
 4. Input the CLIENT_ID, CLIENT_SECRET, REDIRECT URL & the Scopes in the plugin page of Strapi, and save it.
 
 # How to use
-- ### Get Google Authentication URL
+### Get Google Authentication URL
  ```js
     {
         method: 'GET',
@@ -33,7 +33,7 @@ Add the folling lines of code in the file: config/plugins.js
   ```
 After google login, it will redirect the user back to the redirect URL mentioned in the Google project console, with a code parameter in the URL. https://REDIRECT_URL?code=REDIRECTION_AUTH_CODE
     
-- ### Authenticate User
+### Authenticate User
 Use the REDIRECTION_AUTH_CODE you have recieved from the step 1 to make the second request to authenticate the user.
 ```js
     {
@@ -44,7 +44,7 @@ Use the REDIRECTION_AUTH_CODE you have recieved from the step 1 to make the seco
         }
     } 
 ```
-- ### Get Authenticated user details
+### Get Authenticated user details
 Use the JWT token to fetch the user details.
 ```js
     {
@@ -55,7 +55,7 @@ Use the JWT token to fetch the user details.
         }
     } 
 ```
-- ### Create/Update Password for user account.
+### Create/Update Password for user account.
 Use the JWT token to fetch the user details.
 ```js
     {
