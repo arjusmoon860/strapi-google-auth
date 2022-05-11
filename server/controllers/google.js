@@ -49,5 +49,38 @@ module.exports = {
     } catch (error) {
       ctx.badRequest("Error occured while fetching the user profile", null);
     }
+  },
+  async getUserDetails(ctx) {
+    const token = ctx.request.header.authorization ? ctx.request.header.authorization.replace("Bearer ", "") : null;
+    if (!token) {
+      ctx.badRequest("Invalid/Missing token", null);
+    }
+    try {
+      let userData = await strapi
+        .plugin('strapi-google-auth')
+        .service('google').getUserDetailsFromToken(token);
+      ctx.body = userData;
+    } catch (error) {
+      ctx.badRequest("Invalid/Missing token", null);
+    }
+  },
+  async updatePassword(ctx) {
+    const token = ctx.request.header.authorization ? ctx.request.header.authorization.replace("Bearer ", "") : null;
+    if (!token) {
+      ctx.badRequest("Invalid/Missing token", null);
+    }
+    const password = ctx.request.body.password;
+    try {
+      let userData = await strapi
+        .plugin('strapi-google-auth')
+        .service('google').getUserDetailsFromToken(token);
+      await strapi.plugin('users-permissions').service("user").edit(userData.id, {
+        password
+      })
+      ctx.body = { status: true };
+    } catch (error) {
+      console.log(error);
+      ctx.badRequest("Error", "Couldn't update the user");
+    }
   }
 };

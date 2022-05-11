@@ -32,5 +32,23 @@ module.exports = [
       auth: false,
       policies: [],
     },
-  }
+  },
+  {
+    method: 'GET',
+    path: '/me',
+    handler: 'google.getUserDetails',
+    config: {
+      auth: false,
+      policies: [],
+    },
+  },
+  {
+    method: 'POST',
+    path: '/update-password',
+    handler: 'google.updatePassword',
+    config: {
+      auth: false,
+      policies: [],
+    },
+  },
 ];

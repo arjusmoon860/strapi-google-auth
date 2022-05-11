@@ -2,6 +2,7 @@
 
 const { google } = require('googleapis');
 const { OAuth2Client } = require('google-auth-library');
+const { sanitize } = require('@strapi/utils');
 
 module.exports = ({ strapi }) => ({
   async getGoogleCredentials() {
@@ -138,6 +139,22 @@ module.exports = ({ strapi }) => ({
             user: strapi.service('admin::user').sanitizeUser(user),
           },
         })
+      } catch (error) {
+        console.log(error);
+        reject(error);
+      }
+    })
+  },
+
+  async getUserDetailsFromToken(token) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const payload = await strapi.plugin('users-permissions').service("jwt").verify(token);
+        const userID = payload.id;
+        let user = await strapi.plugin('users-permissions').service("user").fetchAuthenticatedUser(userID);
+        const userSchema = strapi.getModel('plugin::users-permissions.user');
+        user = await sanitize.sanitizers.defaultSanitizeOutput(userSchema, user);
+        resolve(user);
       } catch (error) {
         console.log(error);
         reject(error);
