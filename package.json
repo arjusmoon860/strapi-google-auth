@@ -9,7 +9,7 @@
     "kind": "plugin"
   },
   "peerDependencies": {
-    "@strapi/strapi": "4.1.9"
+    "@strapi/strapi": "^4.1"
   },
   "dependencies": {
     "google-auth-library": "^8.0.2",
