@@ -13,7 +13,7 @@ GoogleAuth helps you to easily create google authentication available for your u
 # Activate the Plugin
 Add the folling lines of code in the file: config/plugins.js
 ```js
-    'google-auth': {
+    'strapi-google-auth': {
         enabled: true,
     },
 ```
