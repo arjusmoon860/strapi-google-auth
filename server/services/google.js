@@ -3,6 +3,7 @@
 const { google } = require('googleapis');
 const { OAuth2Client } = require('google-auth-library');
 const { sanitize } = require('@strapi/utils');
+const _ = require('lodash');
 
 module.exports = ({ strapi }) => ({
   async getGoogleCredentials() {
@@ -128,14 +129,14 @@ module.exports = ({ strapi }) => ({
           })
           return resolve({
             data: {
-              token: strapi.service('admin::token').createJwtToken(newUser),
+              token: strapi.plugin('users-permissions').service("jwt").issue(_.pick(newUser, ['id'])),
               user: strapi.service('admin::user').sanitizeUser(newUser),
             },
           })
         }
         resolve({
           data: {
-            token: strapi.service('admin::token').createJwtToken(user),
+            token: strapi.plugin('users-permissions').service("jwt").issue({ id: user.id }),
             user: strapi.service('admin::user').sanitizeUser(user),
           },
         })
