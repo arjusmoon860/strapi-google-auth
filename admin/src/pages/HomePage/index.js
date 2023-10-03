@@ -4,26 +4,32 @@
  *
  */
 
-import React, { memo, useState, useEffect } from 'react';
+import React, { memo, useState, useEffect } from "react";
 // import PropTypes from 'prop-types';
-import pluginId from '../../pluginId';
-import { Box, Link, Button, Flex, Textarea, LinkButton } from '@strapi/design-system';
-import { BaseHeaderLayout } from '@strapi/design-system/Layout';
-import { Typography } from '@strapi/design-system/Typography';
-import { GridLayout } from '@strapi/design-system/Layout';
-import { TextInput } from '@strapi/design-system/TextInput';
-import { Write, Lock, Plus } from '@strapi/icons';
+import pluginId from "../../pluginId";
+import {
+  Box,
+  Link,
+  Button,
+  Flex,
+  Textarea,
+  LinkButton,
+} from "@strapi/design-system";
+import { BaseHeaderLayout } from "@strapi/design-system/Layout";
+import { Typography } from "@strapi/design-system/Typography";
+import { GridLayout } from "@strapi/design-system/Layout";
+import { TextInput } from "@strapi/design-system/TextInput";
+import { Write, Lock, Plus } from "@strapi/icons";
 import axiosInstance from "../../utils/axiosInstance";
 
 const HomePage = () => {
-
   const [creds, setCreds] = useState({
     creds: {
       clientID: "",
       clientSecret: "",
       redirectURL: "",
-      defaultScopes: ""
-    }
+      defaultScopes: "",
+    },
   });
 
   const [saving, setSaving] = useState(false);
@@ -34,9 +40,9 @@ const HomePage = () => {
       creds: {
         clientID: clientID,
         clientSecret: creds.creds.clientSecret,
-        redirectURL: creds.creds.redirectURL
-      }
-    })
+        redirectURL: creds.creds.redirectURL,
+      },
+    });
   }
 
   function handleClientSecret(clientSecret) {
@@ -44,9 +50,9 @@ const HomePage = () => {
       creds: {
         clientID: creds.creds.clientID,
         clientSecret: clientSecret,
-        redirectURL: creds.creds.redirectURL
-      }
-    })
+        redirectURL: creds.creds.redirectURL,
+      },
+    });
   }
 
   function handleRedirectURL(redirectURL) {
@@ -54,9 +60,9 @@ const HomePage = () => {
       creds: {
         clientID: creds.creds.clientID,
         clientSecret: creds.creds.clientSecret,
-        redirectURL: redirectURL
-      }
-    })
+        redirectURL: redirectURL,
+      },
+    });
   }
 
   function handleDefaultScopes(defaultScopes) {
@@ -65,9 +71,9 @@ const HomePage = () => {
         clientID: creds.creds.clientID,
         clientSecret: creds.creds.clientSecret,
         redirectURL: creds.creds.redirectURL,
-        defaultScopes: defaultScopes
-      }
-    })
+        defaultScopes: defaultScopes,
+      },
+    });
   }
 
   async function fetchData() {
@@ -76,13 +82,20 @@ const HomePage = () => {
       setCreds({
         creds: {
           clientID: data.google_client_id ? data.google_client_id : "",
-          clientSecret: data.google_client_secret ? data.google_client_secret : "",
+          clientSecret: data.google_client_secret
+            ? data.google_client_secret
+            : "",
           redirectURL: data.google_redirect_url ? data.google_redirect_url : "",
           defaultScopes: data.google_scopes ? data.google_scopes : "",
-        }
-      })
+        },
+      });
       if (data) {
-        if (data.google_client_id && data.google_client_secret && data.google_redirect_url && data.google_scopes) {
+        if (
+          data.google_client_id &&
+          data.google_client_secret &&
+          data.google_redirect_url &&
+          data.google_scopes
+        ) {
           setEditable(false);
         } else {
           setEditable(true);
@@ -97,9 +110,9 @@ const HomePage = () => {
           clientID: "",
           clientSecret: "",
           redirectURL: "",
-          defaultScopes: ""
-        }
-      })
+          defaultScopes: "",
+        },
+      });
       setEditable(true);
     }
   }
@@ -114,12 +127,12 @@ const HomePage = () => {
         google_client_secret: creds.creds.clientSecret,
         google_redirect_url: creds.creds.redirectURL,
         google_scopes: creds.creds.defaultScopes,
-      })
+      });
       await fetchData();
       setSaving(false);
     } catch (error) {
       setSaving(false);
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -130,7 +143,7 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   return (
@@ -138,39 +151,110 @@ const HomePage = () => {
       <Box padding={8} background="primary100">
         <BaseHeaderLayout
           navigationAction={
-            <Link isExternal href="https://schbang.com">
-              Schbang.
+            <Link isExternal href="https://arjusmoon.com">
+              Arju S Moon.
             </Link>
           }
-          primaryAction={<LinkButton startIcon={<Plus />} size="L" variant="default" href="https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D">
-            Create Google Project
-          </LinkButton>}
-          title="Google Authenticator" subtitle="By Schbang." as="h2" />
+          primaryAction={
+            <LinkButton
+              startIcon={<Plus />}
+              size="L"
+              variant="default"
+              href="https://console.cloud.google.com/projectcreate?previousPage=%2Fcloud-resource-manager%3Fproject%3D%26folder%3D%26organizationId%3D"
+            >
+              Create Google Project
+            </LinkButton>
+          }
+          title="Google Authenticator"
+          subtitle="By Arju S Moon."
+          as="h2"
+        />
       </Box>
 
       <Box padding={8} background="neutral100">
         <Box padding={4}>
-          <Typography variant="beta">Add/Update your Google Project Details.</Typography>
+          <Typography variant="beta">
+            Add/Update your Google Project Details.
+          </Typography>
         </Box>
         <GridLayout>
           <Box padding={4} hasRadius background="neutral0" shadow="tableShadow">
-            <TextInput required disabled={!editable} placeholder="This is a content placeholder" label="Google Client ID" name="content" hint="Ends with apps.googleusercontent.com" onChange={e => handleClientID(e.target.value)} value={creds.creds.clientID} />
+            <TextInput
+              required
+              disabled={!editable}
+              placeholder="This is a content placeholder"
+              label="Google Client ID"
+              name="content"
+              hint="Ends with apps.googleusercontent.com"
+              onChange={(e) => handleClientID(e.target.value)}
+              value={creds.creds.clientID}
+            />
           </Box>
           <Box padding={4} hasRadius background="neutral0" shadow="tableShadow">
-            <TextInput required type="password" disabled={!editable} placeholder="This is a content placeholder" label="Google Client Secret" name="content" hint="Available in your google project" onChange={e => handleClientSecret(e.target.value)} value={creds.creds.clientSecret} />
+            <TextInput
+              required
+              type="password"
+              disabled={!editable}
+              placeholder="This is a content placeholder"
+              label="Google Client Secret"
+              name="content"
+              hint="Available in your google project"
+              onChange={(e) => handleClientSecret(e.target.value)}
+              value={creds.creds.clientSecret}
+            />
           </Box>
           <Box padding={4} hasRadius background="neutral0" shadow="tableShadow">
-            <TextInput required disabled={!editable} placeholder="This is a content placeholder" label="Redirect URL" name="content" hint="Redirect URL mentioned in the Google Project" onChange={e => handleRedirectURL(e.target.value)} value={creds.creds.redirectURL} />
+            <TextInput
+              required
+              disabled={!editable}
+              placeholder="This is a content placeholder"
+              label="Redirect URL"
+              name="content"
+              hint="Redirect URL mentioned in the Google Project"
+              onChange={(e) => handleRedirectURL(e.target.value)}
+              value={creds.creds.redirectURL}
+            />
           </Box>
         </GridLayout>
         <GridLayout>
-          <Box padding={4} marginTop={4} hasRadius background="neutral0" shadow="tableShadow">
-            <Textarea required disabled={!editable} placeholder="" label="Default Scopes" name="content" hint='{"scopes":["https://www.googleapis.com/auth/userinfo.email","https://www.googleapis.com/auth/userinfo.profile"]}' onChange={e => handleDefaultScopes(e.target.value)} value={creds.creds.defaultScopes} />
+          <Box
+            padding={4}
+            marginTop={4}
+            hasRadius
+            background="neutral0"
+            shadow="tableShadow"
+          >
+            <Textarea
+              required
+              disabled={!editable}
+              placeholder=""
+              label="Default Scopes"
+              name="content"
+              hint='{"scopes":["https://www.googleapis.com/auth/userinfo.email","https://www.googleapis.com/auth/userinfo.profile"]}'
+              onChange={(e) => handleDefaultScopes(e.target.value)}
+              value={creds.creds.defaultScopes}
+            />
           </Box>
         </GridLayout>
         <Flex marginTop={4} justifyContent="space-between">
-          <Button disabled={editable} onClick={handleEdit} size="L" endIcon={<Write />} variant='secondary'>Edit</Button>
-          <Button loading={saving} onClick={handleSubmit} size="L" endIcon={<Lock />} variant='default'>Save Credentials</Button>
+          <Button
+            disabled={editable}
+            onClick={handleEdit}
+            size="L"
+            endIcon={<Write />}
+            variant="secondary"
+          >
+            Edit
+          </Button>
+          <Button
+            loading={saving}
+            onClick={handleSubmit}
+            size="L"
+            endIcon={<Lock />}
+            variant="default"
+          >
+            Save Credentials
+          </Button>
         </Flex>
       </Box>
     </div>
