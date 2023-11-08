@@ -67,7 +67,13 @@ module.exports = ({ strapi }) => ({
         if (!scopesData) {
           return reject({ error: true, message: "Invalid/missing scopes" })
         }
-        let scopesObject = JSON.parse(scopesData);
+        let scopesObject = null                                                                    
+        try {
+            scopesObject = JSON.parse(scopesData);
+        } catch(e) {
+            console.log(e)
+        }
+        scopesObject = !scopesObject ? scopesData : scopesObject;
         let scopes = scopesObject.scopes;
 
         if (!scopes || !scopes.length) {
